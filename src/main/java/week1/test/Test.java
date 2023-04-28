@@ -19,6 +19,7 @@ class Hawk extends Bird {
 
 public class Test {
     public static void main(String[] args) {
+        //Test comment
         Hawk hawk = new Hawk();
         // 구현된 클래스를 활용해 업 캐스팅을 이어서 구현하시오.
 
