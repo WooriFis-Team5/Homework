@@ -4,15 +4,18 @@ import week2.Kiosk.domain.*;
 import week2.Kiosk.domain.dto.IntoCartDto;
 import week2.Kiosk.domain.dto.UploadDto;
 import week2.Kiosk.repository.KioskRepository;
+import week2.Kiosk.repository.MoneyRepository;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class KioskService {
     private final KioskRepository kioskRepository;
+    private final MoneyRepository moneyRepository;
 
-    public KioskService(KioskRepository kioskRepository) {
+    public KioskService(KioskRepository kioskRepository, MoneyRepository moneyRepository) {
         this.kioskRepository = kioskRepository;
+        this.moneyRepository = moneyRepository;
     }
 
     public void upload(UploadDto dto) {
@@ -81,18 +84,19 @@ public class KioskService {
     }
 
     public Category getType(Item item) {
-         Map<Category, List<Item>> items = kioskRepository.getRepo();
+        Map<Category, List<Item>> items = kioskRepository.getRepo();
 
-        for(Category type : items.keySet()){
-            if(items.get(type).contains(item)){
+        for (Category type : items.keySet()) {
+            if (items.get(type).contains(item)) {
                 return type;
             }
         }
 
         return null;
     }
+
     public int getItemPrice(Category type, Item item) {
-        switch (type){
+        switch (type) {
             case CLOTHES:
                 return ((Clothes) item).getPrice();
             case BAG:
@@ -103,6 +107,12 @@ public class KioskService {
                 return ((Beverage) item).getPrice();
         }
         return -1;
+    }
+
+    public void putMoney(int money) {
+        moneyRepository.putMoney(money);
+        System.out.println();
+        System.out.println("현재 충전된 금액은 : " + moneyRepository.getMoney());
     }
 }
 

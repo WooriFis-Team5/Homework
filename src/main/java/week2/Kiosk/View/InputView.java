@@ -31,4 +31,11 @@ public class InputView {
 
         return new IntoCartDto(intoCartDto);
     }
+
+    public int readMoney(){
+        Print.putMoney();
+        String  money = sc.nextLine();
+
+        return Integer.parseInt(money);
+    }
 }
