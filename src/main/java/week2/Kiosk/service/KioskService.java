@@ -1,7 +1,6 @@
 package week2.Kiosk.service;
 
-import week2.Kiosk.domain.Category;
-import week2.Kiosk.domain.Item;
+import week2.Kiosk.domain.*;
 import week2.Kiosk.domain.dto.IntoCartDto;
 import week2.Kiosk.domain.dto.UploadDto;
 import week2.Kiosk.repository.KioskRepository;
@@ -62,8 +61,36 @@ public class KioskService {
 
     public void viewCart() {
         List<Item> cart = kioskRepository.getCart();
-        for (Item item : cart){
+
+        System.out.println();
+        for (Item item : cart) {
             System.out.println(item.toString());
         }
+    }
+
+    public void totalAmount() {
+        List<Item> cart = kioskRepository.getCart();
+        int amount = 0;
+
+        for (Item item : cart) {
+            Category category = kioskRepository.getType(item);
+
+            amount += getItemPrice(category, item);
+        }
+        System.out.println("장바구니 총 금액은 : " + amount);
+    }
+
+    public int getItemPrice(Category type, Item item) {
+        switch (type){
+            case CLOTHES:
+                return ((Clothes) item).getPrice();
+            case BAG:
+                return ((Bag) item).getPrice();
+            case FOOD:
+                return ((Food) item).getPrice();
+            case BEVERAGE:
+                return ((Beverage) item).getPrice();
+        }
+        return -1;
     }
 }

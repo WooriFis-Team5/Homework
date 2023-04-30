@@ -19,10 +19,11 @@ public class KioskRepository {
         repo.put(Category.BEVERAGE, new ArrayList<>());
         repo.put(Category.BAG, new ArrayList<>());
 
+        /*// Test를 위한 코드
         repo.get(Category.CLOTHES).add(new Clothes("청바지", 54000));
         repo.get(Category.BEVERAGE).add(new Beverage("아메리카노", 1500));
         repo.get(Category.FOOD).add(new Food("팟타이", 15000));
-        repo.get(Category.FOOD).add(new Food("우동", 10000));
+        repo.get(Category.FOOD).add(new Food("우동", 10000));*/
     }
 
     public void upload(Category type, String name, int price) {
@@ -51,10 +52,20 @@ public class KioskRepository {
         cart.add(item);
     }
 
-    public Item findByName(Category type, String name){
+    public Item findByName(Category type, String name) {
         return repo.get(type).stream()
                 .filter(i -> i.getName().equals(name))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("해당 상품은 존재하지 않습니다."));
+    }
+
+    public Category getType(Item item) {
+        for(Category type : repo.keySet()){
+            if(repo.get(type).contains(item)){
+                return type;
+            }
+        }
+
+        return null;
     }
 }
