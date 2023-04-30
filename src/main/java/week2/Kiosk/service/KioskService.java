@@ -73,13 +73,24 @@ public class KioskService {
         int amount = 0;
 
         for (Item item : cart) {
-            Category category = kioskRepository.getType(item);
+            Category category = getType(item);
 
             amount += getItemPrice(category, item);
         }
         System.out.println("장바구니 총 금액은 : " + amount);
     }
 
+    public Category getType(Item item) {
+         Map<Category, List<Item>> items = kioskRepository.getRepo();
+
+        for(Category type : items.keySet()){
+            if(items.get(type).contains(item)){
+                return type;
+            }
+        }
+
+        return null;
+    }
     public int getItemPrice(Category type, Item item) {
         switch (type){
             case CLOTHES:
@@ -94,3 +105,4 @@ public class KioskService {
         return -1;
     }
 }
+
