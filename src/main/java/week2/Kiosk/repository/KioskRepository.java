@@ -35,6 +35,9 @@ public class KioskRepository {
                 repo.get(category).add(new Beverage(name, price));
                 break;
         }
-        System.out.println(repo);
+    }
+
+    public Map<Category, List<Item>> viewItem() {
+        return repo;
     }
 }

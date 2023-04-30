@@ -43,7 +43,7 @@ public class KioskController {
 
     // 등록된 상품을 카테고리별로 출력해주는 API를 구현하시오
     public void viewItem() {
-
+        kioskService.viewItem();
     }
 
     // 상품을 장바구니에 넣는 API 기능을 구현하시오

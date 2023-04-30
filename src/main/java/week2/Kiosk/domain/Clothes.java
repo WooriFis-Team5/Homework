@@ -13,8 +13,7 @@ public class Clothes extends Item {
 
     @Override
     public String toString() {
-        return "의류{" +
-                "상품명 = " + name +
-                ", 가격=" + price + "원}";
+        return "상품명 = " + name +
+                ", 가격=" + price + "원";
     }
 }

@@ -13,8 +13,7 @@ public class Beverage extends Item{
 
     @Override
     public String toString() {
-        return "음료{" +
-                "상품명 = " + name +
-                ", 가격=" + price + "원}";
+        return "상품명 = " + name +
+                ", 가격=" + price + "원";
     }
 }
