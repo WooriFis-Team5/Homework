@@ -4,6 +4,7 @@ import week2.Kiosk.Util.Retry;
 import week2.Kiosk.View.InputView;
 import week2.Kiosk.domain.Command;
 import week2.Kiosk.domain.dto.CommandDto;
+import week2.Kiosk.domain.dto.IntoCartDto;
 import week2.Kiosk.domain.dto.UploadDto;
 import week2.Kiosk.service.KioskService;
 
@@ -37,8 +38,8 @@ public class KioskController {
 
     // 상품을 등록하는 API 구현하시오
     public void upload() {
-        UploadDto uploadInfo = inputView.readUpload();
-        kioskService.upload(uploadInfo);
+        UploadDto uploadDto = inputView.readUpload();
+        kioskService.upload(uploadDto);
     }
 
     // 등록된 상품을 카테고리별로 출력해주는 API를 구현하시오
@@ -48,7 +49,8 @@ public class KioskController {
 
     // 상품을 장바구니에 넣는 API 기능을 구현하시오
     public void intoCart() {
-
+        IntoCartDto intoCartDto = inputView.readIntoCartItem();
+        kioskService.intoCart(intoCartDto);
     }
 
     // 현재 장바구니에 들어있는 상품들을 보여주는 API 기능을 구현하시오.

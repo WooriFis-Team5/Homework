@@ -2,11 +2,15 @@ package week2.Kiosk.service;
 
 import week2.Kiosk.domain.Category;
 import week2.Kiosk.domain.Item;
+import week2.Kiosk.domain.dto.IntoCartDto;
 import week2.Kiosk.domain.dto.UploadDto;
 import week2.Kiosk.repository.KioskRepository;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class KioskService {
     private final KioskRepository kioskRepository;
@@ -29,10 +33,33 @@ public class KioskService {
         for (Category key : itemMap.keySet()) {
             System.out.println(key.getCategory());
             int i = 1;
-            for (Item value : itemMap.get(key)){
+            for (Item value : itemMap.get(key)) {
                 System.out.println(i++ + ". " + value.toString());
             }
             System.out.println();
         }
+    }
+
+    public void intoCart(IntoCartDto dto) {
+        List<String> orders = isSomeOrder(dto.getOrders());
+
+        for (String order : orders) {
+            try {
+                String[] info = order.split(", ");
+                kioskRepository.intoCart(Category.from(info[0]), info[1]);
+            } catch (IllegalArgumentException e){
+                e.getMessage();
+            }
+        }
+    }
+
+    public List<String> isSomeOrder(String info) {
+        if (info.contains("|")) {
+            String[] orders = info.split("[|]");
+
+            return Arrays.stream(orders).collect(Collectors.toList());
+        }
+
+        return new ArrayList<>(List.of(info));
     }
 }

@@ -14,6 +14,6 @@ public class Bag extends Item{
     @Override
     public String toString() {
         return "상품명 = " + name +
-                ", 가격=" + price + "원";
+                ", 가격 = " + price + "원";
     }
 }

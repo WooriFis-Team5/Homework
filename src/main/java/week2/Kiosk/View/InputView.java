@@ -2,6 +2,7 @@ package week2.Kiosk.View;
 
 import week2.Kiosk.Util.Print;
 import week2.Kiosk.domain.dto.CommandDto;
+import week2.Kiosk.domain.dto.IntoCartDto;
 import week2.Kiosk.domain.dto.UploadDto;
 
 import java.util.Scanner;
@@ -22,5 +23,12 @@ public class InputView {
         String uploadInfo = sc.nextLine();
 
         return new UploadDto(uploadInfo);
+    }
+
+    public IntoCartDto readIntoCartItem() {
+        Print.intoCartItem();
+        String intoCartDto = sc.nextLine();
+
+        return new IntoCartDto(intoCartDto);
     }
 }
