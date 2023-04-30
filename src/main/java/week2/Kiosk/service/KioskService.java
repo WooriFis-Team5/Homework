@@ -6,10 +6,7 @@ import week2.Kiosk.domain.dto.IntoCartDto;
 import week2.Kiosk.domain.dto.UploadDto;
 import week2.Kiosk.repository.KioskRepository;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class KioskService {
@@ -47,7 +44,7 @@ public class KioskService {
             try {
                 String[] info = order.split(", ");
                 kioskRepository.intoCart(Category.from(info[0]), info[1]);
-            } catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 e.getMessage();
             }
         }
@@ -61,5 +58,12 @@ public class KioskService {
         }
 
         return new ArrayList<>(List.of(info));
+    }
+
+    public void viewCart() {
+        List<Item> cart = kioskRepository.getCart();
+        for (Item item : cart){
+            System.out.println(item.toString());
+        }
     }
 }
