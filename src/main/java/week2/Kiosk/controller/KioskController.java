@@ -3,7 +3,8 @@ package week2.Kiosk.controller;
 import week2.Kiosk.Util.Retry;
 import week2.Kiosk.View.InputView;
 import week2.Kiosk.domain.Command;
-import week2.Kiosk.domain.CommandDto;
+import week2.Kiosk.domain.dto.CommandDto;
+import week2.Kiosk.domain.dto.UploadDto;
 import week2.Kiosk.service.KioskService;
 
 import java.util.HashMap;
@@ -36,7 +37,8 @@ public class KioskController {
 
     // 상품을 등록하는 API 구현하시오
     public void upload() {
-
+        UploadDto uploadInfo = inputView.readUpload();
+        kioskService.upload(uploadInfo);
     }
 
     // 등록된 상품을 카테고리별로 출력해주는 API를 구현하시오
