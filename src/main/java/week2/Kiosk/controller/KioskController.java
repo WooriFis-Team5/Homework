@@ -24,6 +24,7 @@ public class KioskController {
         service.put(Command.VIEWCART, this::viewCart);
         service.put(Command.BUY, this::payed);
         service.put(Command.PUTMONEY, this::putMoney);
+        service.put(Command.PAYANDRETURN, this::payAndReturn);
     }
 
     public void run() {
@@ -81,4 +82,9 @@ public class KioskController {
         kioskService.putMoney(money);
     }
 
+
+    // 결제 후 잔액 반환 API
+    public void payAndReturn() {
+        kioskService.payAndReturn();
+    }
 }

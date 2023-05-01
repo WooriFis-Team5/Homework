@@ -3,7 +3,7 @@ package week2.Kiosk.domain;
 import lombok.Getter;
 
 @Getter
-public class Food extends Item{
+public class Food extends Item {
     private int price;
 
     public Food(String name, int price) {

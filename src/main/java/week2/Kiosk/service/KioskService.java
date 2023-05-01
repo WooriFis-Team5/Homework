@@ -71,7 +71,7 @@ public class KioskService {
         }
     }
 
-    public void totalAmount() {
+    public int totalAmount() {
         List<Item> cart = kioskRepository.getCart();
         int amount = 0;
 
@@ -81,6 +81,7 @@ public class KioskService {
             amount += getItemPrice(category, item);
         }
         System.out.println("장바구니 총 금액은 : " + amount);
+        return amount;
     }
 
     public Category getType(Item item) {
@@ -111,8 +112,21 @@ public class KioskService {
 
     public void putMoney(int money) {
         moneyRepository.putMoney(money);
-        System.out.println();
-        System.out.println("현재 충전된 금액은 : " + moneyRepository.getMoney());
+
+        System.out.println("현재 충전된 금액은 : " + moneyRepository.getMoney() + "원");
+    }
+
+    public void payAndReturn() {
+        int totalAmount = totalAmount();
+        int chargedMoney = moneyRepository.getMoney();
+        if (chargedMoney - totalAmount < 0) {
+            System.out.println("충전 금액이 부족합니다.");
+            return;
+        }
+
+        System.out.println("충전된 금액은 : " + chargedMoney + "원");
+        int returnMoney = moneyRepository.returnMoney(totalAmount);
+        System.out.println("쟌돈 :" + returnMoney + "원");
     }
 }
 

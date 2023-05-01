@@ -17,6 +17,7 @@ public class Print {
         System.out.println(BLUE + "3. 장바구니 상품들 보기");
         System.out.println(BLUE + "4. 필요한 결제 금액 보기");
         System.out.println(BLUE + "5. 돈 넣기");
+        System.out.println(BLUE + "6. 결제 및 반환");
         System.out.println(BLUE + "Q. 종료");
         System.out.println(BLUE + "================");
         System.out.print(GREEN + "원하시는 명령어를 작성해주세요 : ");

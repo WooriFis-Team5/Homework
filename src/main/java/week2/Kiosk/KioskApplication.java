@@ -11,15 +11,15 @@ public class KioskApplication {
         controller.run();
     }
 
-    public static KioskService service(){
+    public static KioskService service() {
         return new KioskService(kioskRepository(), moneyRepository());
     }
 
-    public static KioskRepository kioskRepository(){
+    public static KioskRepository kioskRepository() {
         return new KioskRepository();
     }
 
-    public static MoneyRepository moneyRepository(){
+    public static MoneyRepository moneyRepository() {
         return new MoneyRepository();
     }
 }

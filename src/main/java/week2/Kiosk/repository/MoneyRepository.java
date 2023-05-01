@@ -10,8 +10,15 @@ public class MoneyRepository {
         this.money = 0;
     }
 
-    public void putMoney(int putMoney){
+    public void putMoney(int putMoney) {
         this.money += putMoney;
-        System.out.println();
     }
+
+    public int returnMoney(int totalAmount) {
+        int returnMoney = this.money -  totalAmount;
+        this.money = 0;
+
+        return returnMoney;
+    }
+
 }
