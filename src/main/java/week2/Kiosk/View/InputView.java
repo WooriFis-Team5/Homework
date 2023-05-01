@@ -1,7 +1,7 @@
 package week2.Kiosk.View;
 
 import week2.Kiosk.Util.Print;
-import week2.Kiosk.domain.CommandDto;
+import week2.Kiosk.domain.dto.CommandDto;
 
 import java.util.Scanner;
 
@@ -13,7 +13,19 @@ public class InputView {
         Scanner sc = new Scanner(System.in);
         Print.gameStart();
 
-        String command = sc.next().toUpperCase();
+        String command = sc.nextLine().toUpperCase();
         return new CommandDto(command);
+    }
+
+    public String readProductInfo() {
+        Print.categoryType();
+
+        return sc.next();
+    }
+
+    public String readCustomerProduct() {
+        Print.intoCartItem();
+
+        return sc.next();
     }
 }

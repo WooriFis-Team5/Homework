@@ -1,4 +1,4 @@
-package week2.Kiosk.domain;
+package week2.Kiosk.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
