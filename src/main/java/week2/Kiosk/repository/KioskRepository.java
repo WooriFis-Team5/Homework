@@ -52,7 +52,7 @@ public class KioskRepository {
         return repo;
     }
 
-    public void intoCart(Category type, String name) {
+    public void addCart(Category type, String name) {
         Item item = findByName(type, name);
         cart.add(item);
     }

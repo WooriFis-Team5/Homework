@@ -45,7 +45,7 @@ public class KioskService {
         for (String order : orders) {
             try {
                 String[] info = order.split(", ");
-                kioskRepository.intoCart(Category.from(info[0]), info[1]);
+                kioskRepository.addCart(Category.from(info[0]), info[1]);
             } catch (IllegalArgumentException e) {
                 e.getMessage();
             }
