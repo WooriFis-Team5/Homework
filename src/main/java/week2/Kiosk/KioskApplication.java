@@ -23,4 +23,3 @@ public class KioskApplication {
         return new MoneyRepository();
     }
 }
-
