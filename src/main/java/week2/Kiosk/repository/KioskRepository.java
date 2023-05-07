@@ -1,8 +1,7 @@
 package week2.Kiosk.repository;
 
 import lombok.Getter;
-import week2.Kiosk.domain.Category;
-import week2.Kiosk.domain.Item;
+import week2.Kiosk.domain.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,4 +20,10 @@ public class KioskRepository {
         repo.put(Category.BAG, new ArrayList<>());
     }
 
+    public Item findByName(Category type, String name) {
+        return repo.get(type).stream()
+                .filter(i -> i.getName().equals(name))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("해당 상품은 존재하지 않습니다."));
+    }
 }
