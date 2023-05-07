@@ -2,8 +2,7 @@ package week2.Kiosk.View;
 
 import week2.Kiosk.Util.Print;
 import week2.Kiosk.domain.dto.CommandDto;
-import week2.Kiosk.domain.dto.IntoCartDto;
-import week2.Kiosk.domain.dto.UploadDto;
+
 
 import java.util.Scanner;
 

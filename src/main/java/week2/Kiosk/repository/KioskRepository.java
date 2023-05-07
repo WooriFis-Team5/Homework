@@ -18,43 +18,6 @@ public class KioskRepository {
         repo.put(Category.FOOD, new ArrayList<>());
         repo.put(Category.BEVERAGE, new ArrayList<>());
         repo.put(Category.BAG, new ArrayList<>());
-
-        // Test를 위한 코드
-        repo.get(Category.CLOTHES).add(new Clothes("청바지", 54000));
-        repo.get(Category.CLOTHES).add(new Clothes("후드티", 59000));
-        repo.get(Category.BEVERAGE).add(new Beverage("아메리카노", 1500));
-        repo.get(Category.BEVERAGE).add(new Beverage("라떼", 2500));
-        repo.get(Category.BEVERAGE).add(new Beverage("밀크티", 3000));
-        repo.get(Category.FOOD).add(new Food("팟타이", 15000));
-        repo.get(Category.FOOD).add(new Food("우동", 10000));
-        repo.get(Category.BAG).add(new Bag("크로스백", 34000));
-        repo.get(Category.BAG).add(new Bag("에코백", 20000));
-    }
-
-    public void upload(Category type, String name, int price) {
-        switch (type) {
-            case CLOTHES:
-                repo.get(type).add(new Clothes(name, price));
-                break;
-            case BAG:
-                repo.get(type).add(new Bag(name, price));
-                break;
-            case FOOD:
-                repo.get(type).add(new Food(name, price));
-                break;
-            case BEVERAGE:
-                repo.get(type).add(new Beverage(name, price));
-                break;
-        }
-    }
-
-    public Map<Category, List<Item>> viewItem() {
-        return repo;
-    }
-
-    public void addCart(Category type, String name) {
-        Item item = findByName(type, name);
-        cart.add(item);
     }
 
     public Item findByName(Category type, String name) {
